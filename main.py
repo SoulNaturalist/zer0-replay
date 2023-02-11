@@ -16,13 +16,15 @@ parser.add_argument('-file_name', type=str, help='File name to be processed', re
 
 parser.add_argument('-replace_value', type=str, help='Value to replace', required=True)
 
+parser.add_argument('-replace_to', type=str, help='Value to replace', required=True)
+
 parser.add_argument('-delete_spaces', type=str, help='Boolean to delete spaces', required=True)
 
 args = parser.parse_args()
 
 
 with open(args.file_name, 'r') as f:
-    new_data = f.read().replace(args.replace_value, '')
+    new_data = f.read().replace(args.replace_value, args.replace_to)
 with open(args.file_name, 'w') as f:
     f.write(new_data)
 
